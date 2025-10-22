@@ -81,7 +81,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3852192273678962897}
   - component: {fileID: 2567997532681820320}
-  - component: {fileID: 8618428609321528338}
   - component: {fileID: 6761960010316205199}
   m_Layer: 0
   m_Name: Camera
@@ -157,14 +156,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &8618428609321528338
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3685037282876142473}
-  m_Enabled: 1
 --- !u!114 &6761960010316205199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +209,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4361841868439973933}
+  - component: {fileID: -6356912229708056191}
   m_Layer: 0
   m_Name: HandheldCamera
   m_TagString: Untagged
@@ -243,6 +235,26 @@ Transform:
   - {fileID: 3852192273678962897}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-6356912229708056191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7629114047816972200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10b767850e959354da138449c0f62ea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  aperture: 2.8
+  iso: 400
+  focusDistance: 31.4
+  zoom: 50
+  shutterSpeed: 125
+  cam: {fileID: 0}
+  postProcessVolume: {fileID: 0}
+  volumeProfile: {fileID: 0}
 --- !u!1 &8386832495201384550
 GameObject:
   m_ObjectHideFlags: 0

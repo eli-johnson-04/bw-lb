@@ -391,6 +391,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6356912229708056191, guid: 417a51b3da2583e4bb7c3d51832f2344, type: 3}
+      propertyPath: takePhotoButton
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4361841868439973933, guid: 417a51b3da2583e4bb7c3d51832f2344, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0

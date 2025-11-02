@@ -1,14 +1,23 @@
+using System.Collections;
+using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
+
 public class HandheldCamera : MonoBehaviour
 {
-    //public bool powerOn = true; // When false, camera is off. Screen is black.
+    const int SCREEN_WIDTH = 1920;
+    const int SCREEN_HEIGHT = 1080; // this should match the RenderTexture size assigned to the Camera
+
+
     public enum CameraMode { Physical, PostProcessing }
     public CameraMode cameraMode = CameraMode.Physical;
-    
+
+    // Button to take photo
+    public bool takePhotoButton = false;
+
     [Header("Camera Settings")]
     [Range(24f, 200f)] public float zoom = 50.0f;           // 24mm to 200mm (35mm equivalent)
     [Range(0.5f, 100f)] public float focusDistance = 2.0f;   // 0.5m to infinity
@@ -16,12 +25,35 @@ public class HandheldCamera : MonoBehaviour
     [Range(1.4f, 16.0f)] public float aperture = 2.8f;        // f/1.4 to f/16
     [Range(100, 6400)] public int iso = 400;                // 100 to 6400
     [Range(1f, 1000f)] public float shutterSpeed = 125.0f;    // 1/1s to 1/1000s
+    public Texture2D[] photoGallery = new Texture2D[10];
 
-    private Camera cam;
+
+    public Camera cam;
     private Volume postProcessVolume;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public void TakePhoto()
+    {
+        // Render current camera view to a Texture2D and store in photoGallery
+        Texture2D photo = new Texture2D(SCREEN_WIDTH, SCREEN_HEIGHT, TextureFormat.RGB24, false);
+        RenderTexture rt = cam.targetTexture;
+        RenderTexture.active = rt;
+        photo.ReadPixels(new Rect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT), 0, 0);
+        photo.Apply();
+        RenderTexture.active = null;
+
+        for (int i = 0; i < photoGallery.Length; i++)
+        {
+            if (photoGallery[i] == null)
+            {
+                photoGallery[i] = photo;
+                break;
+            }
+        }
+
+    }
+
     void Start()
     {
         cam = GetComponentInChildren<Camera>();
@@ -30,10 +62,15 @@ public class HandheldCamera : MonoBehaviour
     void OnValidate()
     {
         UpdateCameraSettings();
+        if (takePhotoButton)
+        {
+            TakePhoto();
+            takePhotoButton = false;
+        }
     }
 
     void UpdateCameraSettings()
-    {   
+    {
         switch (cameraMode)
         {
             case CameraMode.Physical:
@@ -45,7 +82,7 @@ public class HandheldCamera : MonoBehaviour
         }
     }
 
-
+    // Updates the camera's physical properties (shutter speed, ISO, aperture, focal length, focus distance)
     void UpdatePhysical()
     {
         if (cam != null)

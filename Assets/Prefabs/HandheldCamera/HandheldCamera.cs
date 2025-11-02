@@ -29,7 +29,7 @@ public class HandheldCamera : MonoBehaviour
 
 
     public Camera cam;
-    private Volume postProcessVolume;
+    public Volume postProcessVolume;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -121,11 +121,20 @@ public class HandheldCamera : MonoBehaviour
 
         if (postProcessVolume != null)
         {
+            //print("Updating Post Process Settings");
             // Update Depth of Field settings
             if (postProcessVolume.profile.TryGet<DepthOfField>(out var dof))
             {
-                dof.aperture.value = aperture;
-                dof.focusDistance.value = focusDistance;
+                // Map aperture to focal length
+                // Smaller f-number = shallower depth of field
+                float focalLength = zoom;
+                float fNumber = aperture;
+                // Hyperfocal distance formula
+                float hyperfocal = (focalLength * focalLength) / (fNumber * 0.03f); // assuming circle of confusion = 0.03mm
+                // Calculate near and far focus distances
+                float dist = (focusDistance * focusDistance) / (hyperfocal - focusDistance);
+                dof.gaussianStart.value = focusDistance - dist;
+                dof.gaussianEnd.value = focusDistance + dist;
             }
             else { Debug.LogWarning("DepthOfField not found in Post Processing Profile"); }
 

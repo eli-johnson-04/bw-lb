@@ -129,27 +129,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6356912229708056191, guid: 417a51b3da2583e4bb7c3d51832f2344, type: 3}
       propertyPath: iso
-      value: 468
+      value: 3434
       objectReference: {fileID: 0}
     - target: {fileID: -6356912229708056191, guid: 417a51b3da2583e4bb7c3d51832f2344, type: 3}
       propertyPath: zoom
-      value: 48.2
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: -6356912229708056191, guid: 417a51b3da2583e4bb7c3d51832f2344, type: 3}
       propertyPath: aperture
-      value: 4.99
+      value: 1.91
       objectReference: {fileID: 0}
     - target: {fileID: -6356912229708056191, guid: 417a51b3da2583e4bb7c3d51832f2344, type: 3}
       propertyPath: cameraMode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -6356912229708056191, guid: 417a51b3da2583e4bb7c3d51832f2344, type: 3}
+      propertyPath: focalLength
+      value: 62.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -6356912229708056191, guid: 417a51b3da2583e4bb7c3d51832f2344, type: 3}
       propertyPath: shutterSpeed
-      value: 276
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: -6356912229708056191, guid: 417a51b3da2583e4bb7c3d51832f2344, type: 3}
       propertyPath: focusDistance
-      value: 0.5
+      value: 6.6
       objectReference: {fileID: 0}
     - target: {fileID: -6356912229708056191, guid: 417a51b3da2583e4bb7c3d51832f2344, type: 3}
       propertyPath: postProcessVolume
@@ -157,11 +161,11 @@ PrefabInstance:
       objectReference: {fileID: 346270692}
     - target: {fileID: 2567997532681820320, guid: 417a51b3da2583e4bb7c3d51832f2344, type: 3}
       propertyPath: field of view
-      value: 27.960583
+      value: 21.703152
       objectReference: {fileID: 0}
     - target: {fileID: 2567997532681820320, guid: 417a51b3da2583e4bb7c3d51832f2344, type: 3}
       propertyPath: m_FocalLength
-      value: 48.199997
+      value: 62.6
       objectReference: {fileID: 0}
     - target: {fileID: 4361841868439973933, guid: 417a51b3da2583e4bb7c3d51832f2344, type: 3}
       propertyPath: m_LocalPosition.x

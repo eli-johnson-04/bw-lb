@@ -19,7 +19,7 @@ public class HandheldCamera : MonoBehaviour
     public bool takePhotoButton = false;
 
     [Header("Camera Settings")]
-    [Range(24f, 200f)] public float zoom = 50.0f;           // 24mm to 200mm (35mm equivalent)
+    [Range(24f, 200f)] public float focalLength = 50.0f;           // 24mm to 200mm (35mm equivalent)
     [Range(0.5f, 100f)] public float focusDistance = 2.0f;   // 0.5m to infinity
     [Header("Exposure Settings")]
     [Range(1.4f, 16.0f)] public float aperture = 2.8f;        // f/1.4 to f/16
@@ -90,7 +90,7 @@ public class HandheldCamera : MonoBehaviour
             cam.iso = iso;
             cam.shutterSpeed = shutterSpeed;
             cam.aperture = aperture;
-            cam.focalLength = zoom;
+            cam.focalLength = focalLength;
             cam.focusDistance = focusDistance;
         }
     }
@@ -100,7 +100,7 @@ public class HandheldCamera : MonoBehaviour
     {
         /*
         Breakdown of settings effects:
-        Zoom - adjusts the cam.fieldOfView
+        focalLength - adjusts the cam.fieldOfView
         
         Aperture - affects depth of field post-processing effect
         ISO - affects film grain post-processing effect
@@ -112,8 +112,6 @@ public class HandheldCamera : MonoBehaviour
         */
         if (cam != null)
         {
-            // Update Field of View based on zoom
-            float focalLength = zoom;
             // TODO: what is sensor height?
             float sensorHeight = 24.0f; // Assuming a full-frame sensor height in mm
             cam.fieldOfView = 2.0f * Mathf.Atan((sensorHeight / 2.0f) / focalLength) * Mathf.Rad2Deg;
@@ -125,16 +123,10 @@ public class HandheldCamera : MonoBehaviour
             // Update Depth of Field settings
             if (postProcessVolume.profile.TryGet<DepthOfField>(out var dof))
             {
-                // Map aperture to focal length
-                // Smaller f-number = shallower depth of field
-                float focalLength = zoom;
-                float fNumber = aperture;
-                // Hyperfocal distance formula
-                float hyperfocal = (focalLength * focalLength) / (fNumber * 0.03f); // assuming circle of confusion = 0.03mm
-                // Calculate near and far focus distances
-                float dist = (focusDistance * focusDistance) / (hyperfocal - focusDistance);
-                dof.gaussianStart.value = focusDistance - dist;
-                dof.gaussianEnd.value = focusDistance + dist;
+                dof.mode.value = DepthOfFieldMode.Bokeh;
+                dof.focusDistance.value = focusDistance;
+                dof.aperture.value = aperture;
+                dof.focalLength.value = focalLength;
             }
             else { Debug.LogWarning("DepthOfField not found in Post Processing Profile"); }
 
@@ -183,7 +175,7 @@ Focus Distance: 0.5m to infinity
      10m+ = distant subjects/landscapes
      
 
-Zoom: 24mm to 200mm (35mm equivalent) 
+focalLength: 24mm to 200mm (35mm equivalent) 
 
      24-35mm = wide angle
      50-85mm = normal/portrait

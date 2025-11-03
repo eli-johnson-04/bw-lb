@@ -42,11 +42,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8807302785843349813}
   - component: {fileID: 8758727436250456871}
-  - component: {fileID: 2790404697918914122}
   - component: {fileID: 5518872486245683175}
   m_Layer: 0
   m_Name: RightHand
-  m_TagString: Untagged
+  m_TagString: Right Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,19 +89,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2790404697918914122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2721574396324167427}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25f2b4e4e7e87a14c800577c4ac3af04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hand
-  speed: 10
 --- !u!114 &5518872486245683175
 MonoBehaviour:
   m_ObjectHideFlags: 0

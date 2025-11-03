@@ -31,6 +31,8 @@ public class HandheldCamera : MonoBehaviour
     public Camera cam;
     public Volume postProcessVolume;
 
+    private Shutter shutterSound;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void TakePhoto()
@@ -47,6 +49,7 @@ public class HandheldCamera : MonoBehaviour
         {
             if (photoGallery[i] == null)
             {
+                shutterSound.PlayShutter();
                 photoGallery[i] = photo;
                 break;
             }
@@ -58,6 +61,7 @@ public class HandheldCamera : MonoBehaviour
     {
         cam = GetComponentInChildren<Camera>();
         postProcessVolume = GetComponentInChildren<Volume>();
+        shutterSound = GetComponentInChildren<Shutter>();
     }
     void OnValidate()
     {

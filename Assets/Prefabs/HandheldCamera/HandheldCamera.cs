@@ -129,7 +129,7 @@ public class HandheldCamera : MonoBehaviour
             {
                 // Map aperture to focal length
                 // Smaller f-number = shallower depth of field
-                float focalLength = zoom;
+                float focalLength = dof.focalLength.value;
                 float fNumber = aperture;
                 // Hyperfocal distance formula
                 float hyperfocal = (focalLength * focalLength) / (fNumber * 0.03f); // assuming circle of confusion = 0.03mm

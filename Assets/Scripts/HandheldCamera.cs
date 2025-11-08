@@ -24,9 +24,11 @@ public class HandheldCamera : MonoBehaviour
 
     // These are settings for how sensitive the increments are when the player adjusts settings
     [Header("Adjustment Settings")]
+    [Range(1f, 20f)] public float zoomStep = 5f;
     [Range(0.1f, 5f)] public float apertureStep = 0.5f;
     [Range(0.1f, 5f)] public float focusDistanceStep = 0.1f;
     [Range(0.1f, 5f)] public float postExposureStep = 0.1f;
+
 
     [SerializeField] private Camera cam;
     [SerializeField] private Volume postProcessVolume;
@@ -42,6 +44,43 @@ public class HandheldCamera : MonoBehaviour
         PrintPhoto(photo);
         PlayShutterSound();
     }
+
+    public void IncreaseZoom()
+    {
+        zoom = Mathf.Clamp(zoom + zoomStep, 1f, 100f);
+        UpdateCameraSettings();
+    }
+
+    public void DecreaseZoom()
+    {
+        zoom = Mathf.Clamp(zoom - zoomStep, 1f, 100f);
+        UpdateCameraSettings();
+    }
+
+    public void IncreaseAperture()
+    {
+        aperture = Mathf.Clamp(aperture + apertureStep, 1.0f, 32.0f);
+        UpdateCameraSettings();
+    }
+
+    public void DecreaseAperture()
+    {
+        aperture = Mathf.Clamp(aperture - apertureStep, 1.0f, 32.0f);
+        UpdateCameraSettings();
+    }
+
+    public void IncreaseFocusDistance()
+    {
+        focusDistance = Mathf.Clamp(focusDistance + focusDistanceStep, 0.5f, 100f);
+        UpdateCameraSettings();
+    }
+
+    public void DecreaseFocusDistance()
+    {
+        focusDistance = Mathf.Clamp(focusDistance - focusDistanceStep, 0.5f, 100f);
+        UpdateCameraSettings();
+    }
+
     void OnValidate()
     {
         UpdateCameraSettings();

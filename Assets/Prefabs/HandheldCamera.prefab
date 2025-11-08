@@ -329,7 +329,7 @@ Camera:
   m_ShutterSpeed: 732
   m_Aperture: 10.8
   m_FocusDistance: 24.9
-  m_FocalLength: 50
+  m_FocalLength: 20.78461
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
@@ -344,7 +344,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 26.991467
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -421,6 +421,7 @@ GameObject:
   - component: {fileID: 6134628106869008365}
   - component: {fileID: 8906668360468179607}
   - component: {fileID: 9010028192839789593}
+  - component: {fileID: 6736256190713816179}
   m_Layer: 0
   m_Name: HandheldCamera
   m_TagString: HandheldCamera
@@ -458,16 +459,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7629114047816972200}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10b767850e959354da138449c0f62ea8, type: 3}
+  m_Script: {fileID: 11500000, guid: 9be2c5f01ab9c5c469ceeb735e6382e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  cameraMode: 0
   takePhotoButton: 0
-  focalLength: 50
-  focusDistance: 24.9
-  aperture: 10.8
-  iso: 3959
-  shutterSpeed: 732
+  zoom: 60
+  focusDistance: 2
+  aperture: 2.8
+  postExposure: 0
   photoGallery:
   - {fileID: 0}
   - {fileID: 0}
@@ -479,8 +478,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  apertureStep: 0.5
+  focusDistanceStep: 0.1
+  postExposureStep: 0.1
   cam: {fileID: 2567997532681820320}
-  postProcessVolume: {fileID: 0}
+  postProcessVolume: {fileID: 3467199155947505314}
+  photoPrefab: {fileID: 7030195975820801768, guid: 3fb41dd4a80922949b549c828a27abb1, type: 3}
+  shutterSound: {fileID: 3208141117098987370}
 --- !u!54 &6053291145213276300
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -704,6 +708,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   leftHandModel: {fileID: 0}
   rightHandModel: {fileID: 0}
+--- !u!114 &6736256190713816179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7629114047816972200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9be2c5f01ab9c5c469ceeb735e6382e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HandheldCamera
+  takePhotoButton: 0
+  zoom: 60
+  focusDistance: 2
+  aperture: 2.8
+  postExposure: 0
+  photoGallery:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  apertureStep: 0.5
+  focusDistanceStep: 0.1
+  postExposureStep: 0.1
+  cam: {fileID: 0}
+  postProcessVolume: {fileID: 0}
+  photoPrefab: {fileID: 0}
+  shutterSound: {fileID: 0}
 --- !u!1 &8386832495201384550
 GameObject:
   m_ObjectHideFlags: 0

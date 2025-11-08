@@ -25,7 +25,7 @@ public class AllowTakePicture : MonoBehaviour
     void CheckDisableActivate(SelectEnterEventArgs args)
     {
         selected = args.interactableObject;
-        if (selected.transform.CompareTag(twoHandedGrabbableTag) && !selected.firstInteractorSelecting.Equals(interactor))
+        if (selected.transform.CompareTag(twoHandedGrabbableTag) && selected.interactorsSelecting.Count > 0 && !selected.interactorsSelecting[0].Equals(interactor))
             SetAllowActivate(false);
     }
 
@@ -48,8 +48,11 @@ public class AllowTakePicture : MonoBehaviour
     {
         if (selected != null && !interactor.hasSelection)
         {
-            selected.interactorsSelecting[0].transform.TryGetComponent(out AllowTakePicture atp);
-            if (atp != null) atp.SetAllowActivate(true);
+            if (selected.interactorsSelecting.Count > 0)
+            {
+                selected.interactorsSelecting[0].transform.TryGetComponent(out AllowTakePicture atp);
+                if (atp != null) atp.SetAllowActivate(true);
+            }
             selected = null;
         }
     }

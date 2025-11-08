@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1762833349604753902}
   - component: {fileID: 5556540532111407898}
   - component: {fileID: 4245711869929100017}
+  - component: {fileID: 3304631045834777420}
   m_Layer: 0
   m_Name: Direct Interactor
   m_TagString: Right Hand
@@ -191,6 +192,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.08
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3304631045834777420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641362907584134241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a1c1e8e3a65d5047b72c22006cec65e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  twoHandedGrabbableTag: HandheldCamera
 --- !u!1 &2658545989085840423
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,6 +216,7 @@ GameObject:
   - component: {fileID: 3819412513739863996}
   - component: {fileID: 8693920492565217519}
   - component: {fileID: 1716768985004129690}
+  - component: {fileID: 9032858649098358054}
   m_Layer: 0
   m_Name: Direct Interactor
   m_TagString: Left Hand
@@ -239,7 +254,7 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_InteractionLayers:
     m_Bits: 4294967295
-  m_Handedness: 2
+  m_Handedness: 1
   m_AttachTransform: {fileID: 0}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
@@ -279,7 +294,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_InputActionReferencePerformed: {fileID: 187161793506945269, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    m_InputActionReferencePerformed: {fileID: -6131295136447488360, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     m_InputActionReferenceValue: {fileID: 6558622148059887818, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     m_ObjectReferenceObject: {fileID: 0}
     m_ManualPerformed: 0
@@ -309,7 +324,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_InputActionReferencePerformed: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    m_InputActionReferencePerformed: {fileID: -5982496924579745919, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     m_InputActionReferenceValue: {fileID: -4289430672226363583, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     m_ObjectReferenceObject: {fileID: 0}
     m_ManualPerformed: 0
@@ -382,6 +397,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.08
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9032858649098358054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2658545989085840423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a1c1e8e3a65d5047b72c22006cec65e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AllowTakePicture
+  twoHandedGrabbableTag: HandheldCamera
 --- !u!1001 &6843994059160086148
 PrefabInstance:
   m_ObjectHideFlags: 0

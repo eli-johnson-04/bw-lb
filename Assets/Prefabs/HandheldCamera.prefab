@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 6632135301290614078}
   - component: {fileID: 6134628106869008365}
   - component: {fileID: 8906668360468179607}
-  - component: {fileID: 9010028192839789593}
+  - component: {fileID: 5523283596756816423}
   m_Layer: 0
   m_Name: HandheldCamera
   m_TagString: HandheldCamera
@@ -726,7 +726,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5459032, y: 0.38674417, z: 0.35184127}
   m_Center: {x: -0.017273426, y: -0.095706716, z: 0.066922404}
---- !u!114 &9010028192839789593
+--- !u!114 &5523283596756816423
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -737,7 +737,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0fb58e0539086084d86e35142f57158e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::DisableGrabbingHandModel
   leftHandModel: {fileID: 0}
   rightHandModel: {fileID: 0}
 --- !u!1 &8386832495201384550

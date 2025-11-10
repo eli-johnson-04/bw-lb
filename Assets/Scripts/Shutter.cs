@@ -14,8 +14,6 @@ public class Shutter : MonoBehaviour
     public void PlayShutter()
     {
         if (audioSource != null && shutterSound != null)
-        {
             audioSource.PlayOneShot(shutterSound);
-        }
     }
 }

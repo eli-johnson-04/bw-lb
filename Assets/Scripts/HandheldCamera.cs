@@ -19,7 +19,7 @@ public class HandheldCamera : MonoBehaviour
     [Range(1.0f, 32.0f)] public float aperture = 2.8f;        // f/1.0 to f/32.0
     
     // General 'exposure' setting, affects brightness
-    [Range(-20f, 20f)] public float postExposure = 0f;
+    [Range(-2f, 2f)] public float postExposure = 0f;
     public Texture2D[] photoGallery = new Texture2D[10];
 
     // These are settings for how sensitive the increments are when the player adjusts settings
@@ -27,7 +27,7 @@ public class HandheldCamera : MonoBehaviour
     [Range(1f, 20f)] public float zoomStep = 5f;
     [Range(0.1f, 5f)] public float apertureStep = 0.5f;
     [Range(0.1f, 5f)] public float focusDistanceStep = 0.1f;
-    [Range(0.1f, 5f)] public float postExposureStep = 0.1f;
+    [Range(0.01f, 0.5f)] public float postExposureStep = 0.2f;
 
 
     [SerializeField] private Camera cam;
@@ -87,8 +87,23 @@ public class HandheldCamera : MonoBehaviour
         UpdateCameraSettings();
         if (takePhotoButton)
         {
+#if UNITY_EDITOR
+            // Defer the capture so rendering / editor state has a chance to update.
+            // EditorApplication.delayCall runs on the main thread on the next editor update.
+            UnityEditor.EditorApplication.delayCall += () =>
+            {
+                // Guard in case the object was destroyed between scheduling and execution
+                if (this != null)
+                {
+                    TakePhoto();
+                }
+            };
+            // Clear the button immediately to avoid scheduling multiple calls.
+            takePhotoButton = false;
+#else
             TakePhoto();
             takePhotoButton = false;
+#endif
         }
     }
 
@@ -119,6 +134,8 @@ public class HandheldCamera : MonoBehaviour
         DepthOfField dof;
         if (postProcessVolume.profile.TryGet<DepthOfField>(out dof))
         {   
+            // Ensure we're using Bokeh mode
+            dof.mode.value = DepthOfFieldMode.Bokeh;
             // Bokeh effect settings
             dof.focusDistance.value = focusDistance;
             dof.aperture.value = aperture;
@@ -144,13 +161,17 @@ public class HandheldCamera : MonoBehaviour
     }
     Texture2D CaptureToTexture2D()
     {
-        // Render current camera view to a Texture2D and store in photoGallery
-        Texture2D photo = new Texture2D(SCREEN_WIDTH, SCREEN_HEIGHT, TextureFormat.RGB24, false);
+        if (cam == null)
+        {
+            Debug.LogWarning("CaptureToTexture2D: camera is null.");
+            return null;
+        }
         RenderTexture rt = cam.targetTexture;
-        RenderTexture.active = rt;
-        photo.ReadPixels(new Rect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT), 0, 0);
-        photo.Apply();
-        RenderTexture.active = null; // Unsure if this reset is correct
+        // Force the camera to render into the RT so we read the latest frame
+        cam.Render();
+        Texture2D photo = new(rt.width, rt.height);
+        // Read the pixels from the active RT
+        Graphics.ConvertTexture(rt, photo);
         return photo;
     }
 

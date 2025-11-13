@@ -16,6 +16,7 @@ Material:
   - _NORMALMAP
   - _OCCLUSIONMAP
   - _PARALLAXMAP
+  - _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
   - _SPECULAR_SETUP
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -109,12 +110,12 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Parallax: 0.0374
+    - _Parallax: 0.0711
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Shininess: 0.71
     - _Smoothness: 0.363
-    - _SmoothnessTextureChannel: 0
+    - _SmoothnessTextureChannel: 1
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1

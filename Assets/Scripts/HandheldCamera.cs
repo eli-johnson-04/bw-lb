@@ -20,7 +20,7 @@ public class HandheldCamera : MonoBehaviour
     
     // General 'exposure' setting, affects brightness
     [Range(-2f, 2f)] public float postExposure = 0f;
-    public Texture2D[] photoGallery = new Texture2D[10];
+    //public Texture2D[] photoGallery = new Texture2D[10];
 
     // These are settings for how sensitive the increments are when the player adjusts settings
     [Header("Adjustment Settings")]
@@ -41,7 +41,7 @@ public class HandheldCamera : MonoBehaviour
         // Note, this does not implement any sort of cooldown.
         // TODO: add cooldown to prevent spamming photos.
         Texture2D photo = CaptureToTexture2D();
-        AddPhotoToGallery(photo);
+        //AddPhotoToGallery(photo);
         PrintPhoto(photo);
         PlayShutterSound();
     }
@@ -175,18 +175,18 @@ public class HandheldCamera : MonoBehaviour
         return photo;
     }
 
-    void AddPhotoToGallery(Texture2D photo)
-    {
-        // Store photo in the first available slot in photoGallery
-        for (int i = 0; i < photoGallery.Length; i++)
-        {
-            if (photoGallery[i] == null)
-            {
-                photoGallery[i] = photo;
-                break;
-            }
-        }
-    }
+    // void AddPhotoToGallery(Texture2D photo)
+    // {
+    //     // Store photo in the first available slot in photoGallery
+    //     for (int i = 0; i < photoGallery.Length; i++)
+    //     {
+    //         if (photoGallery[i] == null)
+    //         {
+    //             photoGallery[i] = photo;
+    //             break;
+    //         }
+    //     }
+    // }
 
     void PlayShutterSound()
     {

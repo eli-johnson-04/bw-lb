@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
+using UnityEngine.UI;
 
 
 public class HandheldCamera : MonoBehaviour
@@ -64,7 +65,7 @@ public class HandheldCamera : MonoBehaviour
         ChangeSetting(isContinuous, -1);
    }
    
-   public void CameraSettingsDisplayNext() {
+   public void CycleSetting() {
         currentSetting = (AdjustmentSetting)(((int)currentSetting + 1) % Enum.GetNames(typeof(AdjustmentSetting)).Length);
         UpdateTextUI();
    }
@@ -110,6 +111,8 @@ public class HandheldCamera : MonoBehaviour
                 break;
         };
     }
+
+    
     void OnValidate()
     {
         UpdateCameraSettings();

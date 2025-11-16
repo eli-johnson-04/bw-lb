@@ -8,8 +8,9 @@ public class FlipOnLeftGrab : MonoBehaviour
     private XRGrabInteractable grabbable;
 
     [SerializeField] private Transform CameraModel;
-    [SerializeField] private GameObject leftyScreen;
-    [SerializeField] private GameObject rightyScreen;
+    [SerializeField] private Transform Screen;
+    [SerializeField] private Transform screenPositionWhenGrabbedByLeftHand;
+    private Vector3 defaultScreenPosition;
 
 
     private Vector3 rightyScale;
@@ -18,6 +19,7 @@ public class FlipOnLeftGrab : MonoBehaviour
     void Start()
     {
         grabbable = GetComponent<XRGrabInteractable>();
+        defaultScreenPosition = Screen.transform.localPosition;
         rightyScale = CameraModel.localScale;
         leftyScale = new Vector3(-rightyScale.x, rightyScale.y, rightyScale.z);
     }
@@ -29,13 +31,11 @@ public class FlipOnLeftGrab : MonoBehaviour
         {
             case InteractorHandedness.Left:
                 CameraModel.localScale = leftyScale;
-                leftyScreen.SetActive(true);
-                rightyScreen.SetActive(false);
+                Screen.transform.localPosition = screenPositionWhenGrabbedByLeftHand.localPosition;
                 break;
             case InteractorHandedness.Right:
                 CameraModel.localScale = rightyScale;
-                leftyScreen.SetActive(false);
-                rightyScreen.SetActive(true);
+                Screen.transform.localPosition = defaultScreenPosition;
                 break;
         };
     }

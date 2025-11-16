@@ -64,11 +64,17 @@ public class HandheldCamera : MonoBehaviour
    public void DecrementSetting(bool isContinuous = false) {
         ChangeSetting(isContinuous, -1);
    }
-   
-   public void CycleSetting() {
+
+   public void NextSetting() {
         currentSetting = (AdjustmentSetting)(((int)currentSetting + 1) % Enum.GetNames(typeof(AdjustmentSetting)).Length);
         UpdateTextUI();
    }
+
+   public void PreviousSetting()
+    {
+        currentSetting = (AdjustmentSetting)(((int)currentSetting - 1) % Enum.GetNames(typeof(AdjustmentSetting)).Length);
+        UpdateTextUI();
+    }
 
    private void ChangeSetting(bool isContinuous, float direction) {
         if (isContinuous) {

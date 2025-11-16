@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
+using UnityEngine.UI;
 
 
 public class HandheldCamera : MonoBehaviour
@@ -28,12 +30,21 @@ public class HandheldCamera : MonoBehaviour
     [Range(0.1f, 5f)] public float apertureStep = 0.5f;
     [Range(0.1f, 5f)] public float focusDistanceStep = 0.1f;
     [Range(0.01f, 0.5f)] public float postExposureStep = 0.2f;
-
+    [SerializeField] private Text ui;
 
     [SerializeField] private Camera cam;
     [SerializeField] private Volume postProcessVolume;
     [SerializeField] private GameObject photoPrefab;
     [SerializeField] private Shutter shutterSound;
+
+    private enum AdjustmentSetting
+    {
+        Zoom,
+        Aperture,
+        FocusDistance,
+        PostExposure
+    }
+    private AdjustmentSetting currentSetting = AdjustmentSetting.Zoom;
 
 
     public void TakePhoto()
@@ -46,42 +57,62 @@ public class HandheldCamera : MonoBehaviour
         PlayShutterSound();
     }
 
-    public void IncreaseZoom()
-    {
-        zoom = Mathf.Clamp(zoom + zoomStep, 1f, 100f);
+   public void IncrementSetting(bool isCountinuous = false) {
+         ChangeSetting(isCountinuous, 1);
+   }
+   
+   public void DecrementSetting(bool isContinuous = false) {
+        ChangeSetting(isContinuous, -1);
+   }
+   
+   public void CycleSetting() {
+        currentSetting = (AdjustmentSetting)(((int)currentSetting + 1) % Enum.GetNames(typeof(AdjustmentSetting)).Length);
+        UpdateTextUI();
+   }
+
+   private void ChangeSetting(bool isContinuous, float direction) {
+        if (isContinuous) {
+            direction *= Time.deltaTime;
+        }
+        
+        switch (currentSetting)
+        {
+            case AdjustmentSetting.Zoom:
+                zoom = Mathf.Clamp(zoom + direction * zoomStep, 1f, 100f);
+                break;
+            case AdjustmentSetting.Aperture:
+                aperture = Mathf.Clamp(aperture + direction * apertureStep, 0.5f, 32f);
+                break;
+            case AdjustmentSetting.FocusDistance:
+                focusDistance = Mathf.Clamp(focusDistance + direction * focusDistanceStep, 0.5f, 100f);
+                break;
+            case AdjustmentSetting.PostExposure:
+                postExposure = Mathf.Clamp(postExposure + direction * postExposureStep, -2f, 2f);
+                break;
+        };
         UpdateCameraSettings();
+        UpdateTextUI();
     }
 
-    public void DecreaseZoom()
-    {
-        zoom = Mathf.Clamp(zoom - zoomStep, 1f, 100f);
-        UpdateCameraSettings();
+    private void UpdateTextUI() {
+        switch (currentSetting)
+        {
+            case AdjustmentSetting.Zoom:
+                ui.text = zoom.ToString("F1") + " mm";
+                break;
+            case AdjustmentSetting.Aperture:
+                ui.text = "f/" + aperture.ToString("F1");
+                break;
+            case AdjustmentSetting.FocusDistance:
+                ui.text = focusDistance.ToString("F2") + " m";
+                break;
+            case AdjustmentSetting.PostExposure:
+                ui.text = postExposure.ToString("F1") + " ISO";
+                break;
+        };
     }
 
-    public void IncreaseAperture()
-    {
-        aperture = Mathf.Clamp(aperture + apertureStep, 1.0f, 32.0f);
-        UpdateCameraSettings();
-    }
-
-    public void DecreaseAperture()
-    {
-        aperture = Mathf.Clamp(aperture - apertureStep, 1.0f, 32.0f);
-        UpdateCameraSettings();
-    }
-
-    public void IncreaseFocusDistance()
-    {
-        focusDistance = Mathf.Clamp(focusDistance + focusDistanceStep, 0.5f, 100f);
-        UpdateCameraSettings();
-    }
-
-    public void DecreaseFocusDistance()
-    {
-        focusDistance = Mathf.Clamp(focusDistance - focusDistanceStep, 0.5f, 100f);
-        UpdateCameraSettings();
-    }
-
+    
     void OnValidate()
     {
         UpdateCameraSettings();

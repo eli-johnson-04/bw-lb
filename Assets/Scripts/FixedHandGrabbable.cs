@@ -93,7 +93,6 @@ public class FixedHandGrabbable : XRGrabInteractable
                     break;
                 }
             }
-            ToggleUIMode();
         }
 
         // Only process thumbstick directional input in UI mode
@@ -148,26 +147,6 @@ public class FixedHandGrabbable : XRGrabInteractable
 
         uiModeActive = false;
         uiModeInteractor = null;
-        onClick?.Invoke();
-    }
-
-    void ToggleUIMode()
-    {
-        uiModeActive = !uiModeActive;
-
-        // Only disable actions for the hand that's holding the camera
-        InputActionReference[] actionsToToggle = activeHand == InteractorHandedness.Left
-            ? leftActionsToDisable
-            : rightActionsToDisable;
-
-        // Disable/enable other actions that use the thumbstick
-        foreach (var action in actionsToToggle)
-        {
-            if (action != null && action.action != null)
-                if (uiModeActive) action.action.Disable();
-                else action.action.Enable();
-        }
-
         onClick?.Invoke();
     }
 }

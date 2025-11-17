@@ -48,7 +48,8 @@ public class HandheldCamera : MonoBehaviour
 
     void Start()
     {
-        ui.enabled = false;
+        // ui.enabled = false;
+        ui.gameObject.SetActive(false);
     }
 
     public void TakePhoto()
@@ -106,7 +107,7 @@ public class HandheldCamera : MonoBehaviour
 
     public void ToggleUIVisible()
     {
-        ui.enabled = !ui.enabled;
+        ui.gameObject.SetActive(!ui.gameObject.activeInHierarchy);
     }
 
     private void UpdateTextUI() {

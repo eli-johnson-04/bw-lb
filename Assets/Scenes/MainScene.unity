@@ -2691,7 +2691,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4361841868439973933, guid: 417a51b3da2583e4bb7c3d51832f2344, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1468
+      value: 1.276
       objectReference: {fileID: 0}
     - target: {fileID: 4361841868439973933, guid: 417a51b3da2583e4bb7c3d51832f2344, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2725,6 +2725,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4528032304570614072, guid: 417a51b3da2583e4bb7c3d51832f2344, type: 3}
+      propertyPath: thumbstickMovement
+      value: 
+      objectReference: {fileID: -7010474931609795081, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    - target: {fileID: 4528032304570614072, guid: 417a51b3da2583e4bb7c3d51832f2344, type: 3}
+      propertyPath: thumbstickClickAction
+      value: 
+      objectReference: {fileID: -4987397203339014576, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     - target: {fileID: 5523283596756816423, guid: 417a51b3da2583e4bb7c3d51832f2344, type: 3}
       propertyPath: leftHandModel
       value: 
@@ -4572,6 +4580,14 @@ PrefabInstance:
       propertyPath: m_PolyMesh.m_Mesh
       value: 
       objectReference: {fileID: 209204445}
+    - target: {fileID: 3949319869060258497, guid: 8341ae6feeeb26448a083761f83e371a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2574
+      objectReference: {fileID: 0}
+    - target: {fileID: 3949319869060258497, guid: 8341ae6feeeb26448a083761f83e371a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.116
+      objectReference: {fileID: 0}
     - target: {fileID: 3963193841840241538, guid: 8341ae6feeeb26448a083761f83e371a, type: 3}
       propertyPath: m_Mesh
       value: 

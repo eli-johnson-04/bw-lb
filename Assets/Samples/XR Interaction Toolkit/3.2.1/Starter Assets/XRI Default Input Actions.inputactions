@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "XRI Default Input Actions",
     "maps": [
         {
@@ -3395,6 +3396,54 @@
                     "action": "Spawn Object",
                     "isComposite": false,
                     "isPartOfComposite": true
+                }
+            ]
+        },
+        {
+            "name": "New action map",
+            "id": "9b4d70df-6566-4b33-ac69-0d95b4b409f1",
+            "actions": [
+                {
+                    "name": "cliq",
+                    "type": "Button",
+                    "id": "76b95b5e-876e-4843-ae67-50039afd25ef",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "stiq",
+                    "type": "Value",
+                    "id": "2ac3d9da-3930-47b0-93f4-8b1360245c0e",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "77ca2672-5b01-4fcf-8a1c-f6c87212589f",
+                    "path": "<QuestTouchPlusController>/thumbstickClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "cliq",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e971dadb-f2ac-4aed-baf0-f574817aad88",
+                    "path": "<QuestTouchPlusController>/thumbstick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "stiq",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

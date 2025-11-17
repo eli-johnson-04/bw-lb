@@ -46,6 +46,10 @@ public class HandheldCamera : MonoBehaviour
     }
     private AdjustmentSetting currentSetting = AdjustmentSetting.Zoom;
 
+    void Start()
+    {
+        ui.enabled = false;
+    }
 
     public void TakePhoto()
     {
@@ -98,6 +102,11 @@ public class HandheldCamera : MonoBehaviour
         };
         UpdateCameraSettings();
         UpdateTextUI();
+    }
+
+    public void ToggleUIVisible()
+    {
+        ui.enabled = !ui.enabled;
     }
 
     private void UpdateTextUI() {

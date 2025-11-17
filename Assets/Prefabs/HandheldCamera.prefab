@@ -912,6 +912,95 @@ MonoBehaviour:
   m_MaxAngularVelocityDelta: 20
   leftHandAttachTransform: {fileID: 8852429781035527975}
   rightHandAttachTransform: {fileID: 7306645917192642047}
+  thumbstickMovement: {fileID: 8275859971367427353, guid: b6d5c44ebe3244b7692e81ae8265eb22, type: 3}
+  thumbstickClickAction: {fileID: 637922521265743415, guid: b6d5c44ebe3244b7692e81ae8265eb22, type: 3}
+  leftActionsToDisable:
+  - {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  - {fileID: -7374733323251553461, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  - {fileID: 1010738217276881514, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  - {fileID: -3742484312079769484, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  - {fileID: 1263111715868034790, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  rightActionsToDisable:
+  - {fileID: -8198699208435500284, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  - {fileID: 15759602096507913, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  - {fileID: -8525429354371678379, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  - {fileID: -6493913391331992944, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  - {fileID: -8061240218431744966, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6356912229708056191}
+        m_TargetAssemblyTypeName: HandheldCamera, Assembly-CSharp
+        m_MethodName: ToggleUIVisible
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onScrollUp:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6356912229708056191}
+        m_TargetAssemblyTypeName: HandheldCamera, Assembly-CSharp
+        m_MethodName: NextSetting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onScrollDown:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6356912229708056191}
+        m_TargetAssemblyTypeName: HandheldCamera, Assembly-CSharp
+        m_MethodName: PreviousSetting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onIncrement:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6356912229708056191}
+        m_TargetAssemblyTypeName: HandheldCamera, Assembly-CSharp
+        m_MethodName: IncrementSetting
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDecrement:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6356912229708056191}
+        m_TargetAssemblyTypeName: HandheldCamera, Assembly-CSharp
+        m_MethodName: DecrementSetting
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5523283596756816423
 MonoBehaviour:
   m_ObjectHideFlags: 0
